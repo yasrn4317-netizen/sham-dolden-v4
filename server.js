@@ -31,7 +31,7 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 // ==========================================
 const databaseUrl = process.env.DATABASE_URL;
 const db = databaseUrl ? new Pool({
-  connectionString: databaseUrl,
+  connectionString: databaseUrl.replace(/([?&]sslmode=)require\b/i, "$1verify-full"),
   ssl: process.env.DB_SSL === "false" ? false : { rejectUnauthorized: false }
 }) : null;
 
