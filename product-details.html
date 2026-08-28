@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المشروع | الشام الذهبي</title>
+    <link rel="stylesheet" href="product-details.css">
+</head>
+<body>
+
+    <!-- طبقة التظليل القائمة الجانبية -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- القائمة الجانبية -->
+    <aside id="sidebar-menu" class="sidebar-menu">
+        <div class="sidebar-header">
+            <h3>🏛️ الشام الذهبي</h3>
+            <span id="close-sidebar" class="close-sidebar">&times;</span>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html">🏠 الرئيسية</a></li>
+            <li><a href="gallery.html">🎨 معرض الموديلات</a></li>
+            <li><a href="baron.html#projects">📂 إدارة المشاريع</a></li>
+          
+        </ul>
+    </aside>
+
+    <!-- الهيدر العلوي -->
+    <header class="main-header">
+        <div class="menu-btn" id="open-menu-btn">☰</div>
+        <div class="logo">🏛️ الشام الذهبي</div>
+        <div class="theme-btn" id="theme-toggle-btn">🌙</div>
+    </header>
+
+    <main class="details-container">
+        <!-- 1. الشارة البيضاوية العلوية -->
+        <div class="badge-pill">
+            <span>✨ الإتقان والفخامة في مكان واحد</span>
+        </div>
+
+        <!-- 2. العنوان الرئيسي والوصف -->
+        <h1 id="project-title" class="hero-title">جاري تحميل التفاصيل...</h1>
+        <p id="details-status" class="details-status" role="status" aria-live="polite"></p>
+        <p id="project-subtitle" class="hero-desc">
+            استعرض التفاصيل الكاملة للموديل، المواد المستخدمة، ومدة التنفيذ المصممة بعناية بأعلى معايير الدقة والإنهاء الفاخر.
+        </p>
+
+        <!-- 3. شريط الإحصائيات -->
+        <div class="stats-card">
+            <div class="stat-item">
+                <span class="stat-num">+300</span>
+                <span class="stat-label">مشروع منفذ</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">أمان وجودة</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">+10</span>
+                <span class="stat-label">خبرة أعوام</span>
+            </div>
+        </div>
+
+        <!-- 4. عنوان معرض التفاصيل -->
+        <div class="section-heading">
+            <h2>معاينـة <span>الموديل</span></h2>
+        </div>
+
+        <!-- 5. كرت عرض الموديل الرئيسي -->
+        <div class="product-preview-card">
+            <div class="card-img-wrapper">
+                <img id="project-main-img" src="data:," alt="صورة الموديل">
+                <!-- معرض الصور المصغرة -->
+                <div id="project-gallery-thumbs" class="thumbs-container"></div>
+            </div>
+            
+            <div class="card-body">
+                <h3 id="card-project-title">...</h3>
+                <p id="project-desc" class="card-desc">جاري جلب الوصف...</p>
+
+                <!-- شبكة المواصفات داخل الكرت -->
+                <div class="specs-mini-grid">
+                    <div class="spec-tag">🏷️ <span id="category-val">...</span></div>
+                    <div class="spec-tag">🪵 <span id="materials-val">...</span></div>
+                    <div class="spec-tag">⏱️ <span id="duration-val">...</span></div>
+                    <div class="spec-tag">📍 <span id="city-val">...</span></div>
+                    <div class="spec-tag">🔖 <span id="model-code-val">...</span></div>
+                </div>
+
+                <!-- أزرار الاتصال والمتابعة -->
+                <div class="card-actions">
+                    <a data-contact-link="phone" href="#" class="action-btn btn-phone"><i class="fa-solid fa-phone"></i> اتصال</a>
+                    <a id="btn-whatsapp" data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="action-btn btn-green">واتساب</a>
+                    <a id="btn-category-page" href="gallery.html" class="action-btn btn-gold">عرض بقية القسم</a>
+                </div>
+                <div class="utility-actions">
+                    <button type="button" id="share-project-btn" class="utility-btn"><i class="fa-solid fa-share-nodes"></i> مشاركة المشروع</button>
+                    <a id="download-project-image" class="utility-btn" href="#" download><i class="fa-solid fa-download"></i> تنزيل الصورة</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. خيارات العودة -->
+        <div class="navigation-decisions">
+            <a href="gallery.html" class="action-btn btn-outline">🔙 العودة للمعرض العام</a>
+        </div>
+
+        <!-- 7. زر الروبوت اللوجستي -->
+        <button type="button" class="floating-bot-btn" onclick="toggleRobotChat()" aria-label="فتح المساعد الآلي">
+            💬
+        </button>
+    </main>
+
+    <!-- نافذة المساعد الآلي -->
+    <div id="robot-chat-modal" class="robot-modal" style="display: none;">
+        <div class="robot-modal-content">
+            <button type="button" class="close-btn" onclick="toggleRobotChat()" aria-label="إغلاق المساعد الآلي">&times;</button>
+            <h3>🤖 المساعد الآلي والدعم اللوجستي</h3>
+            <p>كيف يمكننا مساعدتك في اختيار الموديل المناسب؟</p>
+            <div class="robot-options">
+                <button onclick="sendRobotQuery('help_choice')">💡 ساعدني في الاختيار</button>
+                <button onclick="sendRobotQuery('report_issue')">⚠️ الإبلاغ عن خطأ في الصفحة</button>
+            </div>
+            <div id="robot-response" class="robot-response-area"></div>
+        </div>
+    </div>
+
+    <script src="social-links.js"></script>
+    <script src="product-details.js"></script>
+</body>
+</html>

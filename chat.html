@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>مركز الرسائل | الشام الذهبي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- قائمة المحادثات -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-row">
+          <div class="brand">
+            <span class="crown">👑</span>
+            <div>
+              <strong>الشام الذهبي</strong>
+              <small>مركز الرسائل</small>
+            </div>
+          </div>
+          <a href="index.html" class="icon-btn" title="الموقع"><i class="fa-solid fa-globe"></i></a>
+        </div>
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="search-input" placeholder="بحث بالاسم أو الرقم..." autocomplete="off">
+        </div>
+      </div>
+      <div class="chat-list" id="chat-list">
+        <div class="hint">جاري التحميل...</div>
+      </div>
+    </aside>
+
+    <!-- نافذة الشات -->
+    <section class="chat-panel">
+      <div class="chat-status" id="chat-status" role="status" aria-live="polite"></div>
+      <div class="welcome" id="welcome">
+        <div class="welcome-card">
+          <span class="welcome-icon">💬</span>
+          <h1>مركز رسائل الشام الذهبي</h1>
+          <p>اختر محادثة من القائمة للرد على الزبون</p>
+        </div>
+      </div>
+
+      <div class="chat-screen" id="chat-screen" hidden>
+        <header class="chat-top">
+          <button type="button" class="icon-btn mobile-only" id="back-btn" aria-label="رجوع">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <div class="avatar" id="contact-avatar">ز</div>
+          <div class="who">
+            <strong id="contact-name">—</strong>
+            <span id="contact-phone">—</span>
+          </div>
+          <button type="button" class="icon-btn danger" id="delete-btn" title="حذف">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </header>
+
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <form class="composer" id="reply-form">
+          <input type="text" id="reply-input" placeholder="اكتب ردك للزبون..." autocomplete="off">
+          <button type="submit" class="send" title="إرسال">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+  <script src="chat.js"></script>
+</body>
+</html>

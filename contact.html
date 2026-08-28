@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا - الشام الذهبي</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card-bg: #1a1a1a;
+      --gold: #d4af37;
+      --text: #f0f0f0;
+      --border: rgba(212, 175, 55, 0.3);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      direction: rtl;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #181818;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .nav-btn {
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 0 15px;
+      flex: 1;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quick-contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .contact-btn-card {
+      background: #222;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px 10px;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .contact-btn-card:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .contact-btn-card i {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+
+    .contact-btn-card:hover i {
+      color: #000;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .field input, .field textarea {
+      width: 100%;
+      padding: 10px;
+      background: #262626;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: #fff;
+      box-sizing: border-box;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .field input:focus, .field textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .send-btn {
+      width: 100%;
+      padding: 11px;
+      background: var(--gold);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .send-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status-notice {
+      text-align: center;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px dashed var(--gold);
+      padding: 12px;
+      border-radius: 8px;
+      color: #ccc;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo"><i class="fa-solid fa-headset"></i> تواصل معنا</div>
+    <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> الرئيسية</a>
+  </header>
+
+  <main class="container">
+    
+    <div class="quick-contact">
+      <a data-contact-link="whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="contact-btn-card">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>واتساب</span>
+      </a>
+      <a data-contact-link="phone" href="#" class="contact-btn-card">
+        <i class="fa-solid fa-phone"></i>
+        <span>اتصال مباشر</span>
+      </a>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-envelope"></i> أرسل لنا رسالة</h2>
+      <form id="contactForm">
+        <div class="field">
+          <label>الاسم الكامل</label>
+          <input type="text" id="userName" placeholder="اسمك الكريم" required>
+        </div>
+        <div class="field">
+          <label>رقم الهاتف</label>
+          <input type="tel" id="userPhone" placeholder="09xxxxxxxx" required>
+        </div>
+        <div class="field">
+          <label>الرسالة / الطلب</label>
+          <textarea id="userMsg" rows="3" placeholder="اكتب استفسارك أو تفاصيل الديكور المطلوب..." required></textarea>
+        </div>
+        <button type="submit" id="submitBtn" class="send-btn">إرسال الرسالة 🚀</button>
+      </form>
+    </div>
+
+    <div class="status-notice" id="contact-status" role="status">
+      ✨ <strong>الشام الذهبي:</strong> نرحب باستفساراتكم وطلباتكم المسبقة دائماً عبر الهاتف والواتساب!
+    </div>
+
+  </main>
+
+  <footer>جميع الحقوق محفوظة © 2026 الشام الذهبي</footer>
+
+  <script src="social-links.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

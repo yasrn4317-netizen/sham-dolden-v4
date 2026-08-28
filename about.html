@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن - الشام الذهبي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+  <header class="main-header">
+    <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    <a href="index.html" class="logo-area">
+      <span>الشام الذهبي</span>
+      <i class="fa-solid fa-landmark"></i>
+    </a>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </header>
+
+  <div class="side-menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
+  <nav class="side-menu" id="side-menu">
+    <div class="side-menu-header">
+      <h3>القائمة الرئيسية</h3>
+      <i class="fa-solid fa-xmark" onclick="toggleMenu()" style="cursor:pointer;"></i>
+    </div>
+    <ul class="side-menu-links">
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+      <li><a href="gypsum.html"><i class="fa-solid fa-layer-group"></i> الجبس بورد</a></li>
+      <li><a href="kids-room.html"><i class="fa-solid fa-bed"></i> غرف الأطفال</a></li>
+      <li><a href="upholstery.html"><i class="fa-solid fa-couch"></i> الكنبايات</a></li>
+      <li><a href="3d.html"><i class="fa-solid fa-cube"></i> ثلاثي الأبعاد</a></li>
+      <li><a href="bot.html"><i class="fa-solid fa-robot"></i> المجيب الآلي</a></li>
+      <li><a href="chat.html"><i class="fa-solid fa-comments"></i> الدردشة</a></li>
+      <hr style="border:0;border-top:1px solid var(--border-gold);margin:10px 0;">
+      <li><a href="about.html" class="active"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-headset"></i> اتصل بنا</a></li>
+    </ul>
+  </nav>
+
+  <main class="about-page">
+
+    <!-- مقدمة -->
+    <section class="about-hero">
+      <div class="hero-badge">معمل الشام الذهبي</div>
+      <h1>نحوّل المساحات إلى تحف فنية</h1>
+      <p>
+        من الترميم والتشطيب إلى الديكورات ثلاثية الأبعاد والإضاءة المخفية —
+        نشتغل بإتقان عالي ونخلي كل زاوية تحكي قصة فخامة.
+      </p>
+    </section>
+
+    <!-- كيف نشتغل -->
+    <section class="about-section">
+      <h2><i class="fa-solid fa-screwdriver-wrench"></i> كيف نشتغل؟</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <h3>معاينة وفهم الطلب</h3>
+          <p>نزور المكان، نفهم ذوقك، ونحدد أفضل حل يناسب المساحة والميزانية.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <h3>تصميم وتنفيذ</h3>
+          <p>ننفذ بدقة: جبس، تنجيد، ديكور 3D، إضاءة مخفية، وتشطيب نظيف.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <h3>تسليم بجودة عالية</h3>
+          <p>نسلم شغل مرتب، زوايا مستقيمة، تشطيب ناعم، ونتيجة تفرح العين.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- قبل وبعد -->
+    <section class="about-section">
+      <h2><i class="fa-solid fa-arrows-rotate"></i> من الواقع... قبل وبعد</h2>
+      <p class="section-note">هذا مثال بسيط على شغل الترميم والتشطيب عندنا</p>
+    <!-- قبل / بعد -->
+<div class="before-after">
+  <div class="ba-card">
+    <div class="ba-label before">قبل</div>
+    <img src="images/gp.jpg" alt="قبل الترميم">
+    <p>عمود متضرر بتقشر وزوايا غير منتظمة</p>
+  </div>
+  <div class="ba-card">
+    <div class="ba-label after">بعد</div>
+    <img src="images/gp1.jpg" alt="بعد الترميم">
+    <p>تشطيب أبيض ناعم بزوايا حادة ومستقيمة</p>
+  </div>
+</div>
+    </section>
+
+    <!-- تخصصاتنا -->
+    <section class="about-section">
+      <h2><i class="fa-solid fa-star"></i> تخصصاتنا</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>جبس بورد</h3>
+          <p>أسقف وجدران بتشطيب فخم</p>
+        </div>
+        <div class="service-item">
+          <i class="fa-solid fa-cube"></i>
+          <h3>ديكور 3D</h3>
+          <p>جدران ثلاثية أبعاد مع إضاءة مخفية</p>
+        </div>
+        <div class="service-item">
+          <i class="fa-solid fa-couch"></i>
+          <h3>تنجيد وصالونات</h3>
+          <p>كنبايات ومفروشات بأعلى جودة</p>
+        </div>
+        <div class="service-item">
+          <i class="fa-solid fa-bed"></i>
+          <h3>غرف أطفال</h3>
+          <p>تصاميم عملية وجميلة وآمنة</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- لماذا نحن -->
+    <section class="about-section">
+      <h2><i class="fa-solid fa-medal"></i> ليش الشام الذهبي؟</h2>
+      <div class="why-list">
+        <div class="why-item"><i class="fa-solid fa-check"></i> تنفيذ دقيق وتفاصيل نظيفة</div>
+        <div class="why-item"><i class="fa-solid fa-check"></i> خامات مختارة بعناية</div>
+        <div class="why-item"><i class="fa-solid fa-check"></i> التزام بالمواعيد</div>
+        <div class="why-item"><i class="fa-solid fa-check"></i> أسعار واضحة حسب الطلب</div>
+        <div class="why-item"><i class="fa-solid fa-check"></i> دعم ومتابعة بعد التسليم</div>
+      </div>
+    </section>
+
+    <!-- دعوة للتواصل -->
+    <section class="about-cta">
+      <h2>جاهز تحوّل مساحتك؟</h2>
+      <p>تواصل معنا الآن وخلينا نبدأ التصميم</p>
+      <div class="cta-buttons">
+        <a href="chat.html" class="cta-btn gold">💬 محادثة مباشرة</a>
+        <a href="contact.html" class="cta-btn outline">📞 اتصل بنا</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="main-footer">
+    <p>جميع الحقوق محفوظة © 2026 الشام الذهبي</p>
+  </footer>
+
+  <a href="bot.html" class="floating-ai-btn"><i class="fa-solid fa-robot"></i></a>
+
+  <script src="about.js"></script>
+</body>
+</html>

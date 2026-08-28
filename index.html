@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الشام الذهبي للديكور والتشطيبات الفاخرة</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- خلفية معتمة للقائمة الجانبية -->
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  <!-- شريط التنقل العلوي -->
+  <header class="navbar">
+    <div class="nav-right">
+      <button class="menu-btn" onclick="toggleMenu()" title="القائمة">☰</button>
+      <h2 class="logo-text">🏛️ الشام الذهبي</h2>
+    </div>
+    <button id="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">🌙</button>
+  </header>
+
+  <section class="featured-carousel-section" id="featured-projects" aria-label="المشاريع المميزة">
+    <div class="featured-carousel" id="featured-carousel">
+      <div class="featured-carousel-loading">جاري تحميل المشاريع المميزة...</div>
+    </div>
+  </section>
+
+  <!-- القائمة الجانبية -->
+  <aside class="side-menu" id="sideMenu">
+    <button class="close-btn" onclick="toggleMenu()">✕</button>
+    <nav class="sidebar-menu">
+      <div class="sidebar-header">
+        <h3>القائمة الرئيسية</h3>
+      </div>
+      <ul class="sidebar-links">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+        <li><a href="gypsum.html"><i class="fa-solid fa-layer-group"></i> أعمال الجبس بورد</a></li>
+        <li><a href="kids-room.html"><i class="fa-solid fa-bed"></i> غرف الأطفال</a></li>
+        <li><a href="upholstery.html"><i class="fa-solid fa-couch"></i> الكنبايات والمفروشات</a></li>
+        <li><a href="3d.html"><i class="fa-solid fa-cube"></i> الديكورات ثلاثية الأبعاد</a></li>
+        <li><a href="bot.html"><i class="fa-solid fa-robot"></i> المجيب الآلي / البوت</a></li>
+        <li><a href="chat.html"><i class="fa-solid fa-comments"></i> صفحة الدردشة والمراسلة</a></li>
+        <hr style="border: 0; border-top: 1px solid var(--border-gold); margin: 12px 0;">
+        <li><a href="terms.html"><i class="fa-solid fa-file-contract"></i> اتفاقية المستخدم</a></li>
+        <li><a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> سياسة الخصوصية</a></li>
+        <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-headset"></i> اتصل بنا</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- البانر الترحيبي -->
+  <section class="hero">
+    <span class="hero-badge">✨ الإتقان والفخامة في مكان واحد</span>
+    <h1>نحوّل مساحاتك إلى <span>تحف فنية</span></h1>
+    <p>تصميم وتنفيذ أحدث الديكورات، الجبس بورد، الدهانات الحديثة، وتنجيد الصالونات بأعلى معايير الدقة والجمال الإبداعي.</p>
+    <a href="#services" class="btn-primary">استعرض أحدث أعمالنا 🚀</a>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <h4>+150</h4>
+        <p>مشروع منجز</p>
+      </div>
+      <div class="stat-item">
+        <h4>100%</h4>
+        <p>جودة وإتقان</p>
+      </div>
+      <div class="stat-item">
+        <h4>+10</h4>
+        <p>سنوات خبرة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- شبكة الأقسام -->
+  <section class="services-section" id="services">
+    <h2 class="section-title">أقسام أعمالنا المميزة</h2>
+    <p class="section-subtitle">اختر القسم الذي ترغب باستكشاف تصاميمه ومعرض أفكاره:</p>
+    
+    <div class="services-grid">
+      <a href="3d.html" class="service-card">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="images/3D1.png" alt="ديكور ثلاثي الأبعاد وإضاءة">
+        </div>
+        <div class="service-info">
+          <h3>ثلاثي الأبعاد وإضاءة مخفية 💡</h3>
+          <p>أحدث صيحات الإضاءات الجمالية والأسقف المعلقة لغرف المعيشة والصالونات.</p>
+        </div>
+      </a>
+
+      <a href="upholstery.html" class="service-card">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="images/sofa-capitone.png" alt="تنجيد صالونات كابيتونية">
+        </div>
+        <div class="service-info">
+          <h3>قسم التنجيد والصالونات 🛋️</h3>
+          <p>أرقى موديلات الكابيتونية الفاخرة وتفصيل أطقم الكنب العصرية بأجود الخامات.</p>
+        </div>
+      </a>
+
+      <a href="kids-room.html" class="service-card">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="images/kids-room.png" alt="غرف نوم أطفال">
+        </div>
+        <div class="service-info">
+          <h3>غرف نوم الأطفال 🧸✨</h3>
+          <p>تصاميم ديكورية مخصصة تحول غرف أطفالك إلى عالم من الخيال والبهجة.</p>
+        </div>
+      </a>
+
+      <a href="gypsum.html" class="service-card">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="images/gypsum-design.png" alt="تصاميم جبس بورد">
+        </div>
+        <div class="service-info">
+          <h3>أعمال الجبس بورد 🧱✨</h3>
+          <p>تصاميم حديثة للأسقف المستعارة والديكورات الجدارية وشاشات البلازما.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- لماذا تختارنا -->
+  <section class="services-section" id="about">
+    <h2 class="section-title">لماذا تختار الشام الذهبي؟</h2>
+    <p class="section-subtitle">نضع رضاك وإتقان العمل في مقدمة أولوياتنا</p>
+    <div class="services-grid" style="margin-top: 30px;">
+      <div class="feature-box">
+        <span style="font-size: 38px;">🥇</span>
+        <h3>جودة وخبرة عالية</h3>
+        <p>نعمل بأحدث التقنيات وأفضل الخامات لضمان نتائج مذهلة تدوم طويلاً.</p>
+      </div>
+      <div class="feature-box">
+        <span style="font-size: 38px;">🕒</span>
+        <h3>التزام بالمواعيد</h3>
+        <p>الوقت لدينا مقدس، ونلتزم بتسليم كافة الأعمال في الوقت المتفق عليه.</p>
+      </div>
+      <div class="feature-box">
+        <span style="font-size: 38px;">💰</span>
+        <h3>أسعار تنافسية</h3>
+        <p>باكجات تشطيب وتصميم تناسب ميزانيتك مع الحفاظ على الإتقان.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- نموذج التواصل -->
+  <section class="contact-section" id="contact">
+    <h2 class="section-title">تواصل معنا مباشرة 💬</h2>
+    <p class="section-subtitle">أدخل بياناتك لتبدأ محادثة فورية مع فريق الدعم والإشراف لدينا:</p>
+    
+    <div class="contact-form">
+      <div class="form-group">
+        <label for="cust-name">الاسم الكريم:</label>
+        <input type="text" id="cust-name" class="form-control" placeholder="أدخل اسمك...">
+      </div>
+
+      <div class="form-group">
+        <label for="cust-phone">رقم الهاتف:</label>
+        <input type="tel" id="cust-phone" class="form-control" placeholder="أدخل رقم هاتفك...">
+      </div>
+
+      <div class="form-group">
+        <label for="cust-msg">الرسالة أو الاستفسار:</label>
+        <textarea id="cust-msg" class="form-control" placeholder="اكتب استفسارك أو طلبك هنا..." rows="4"></textarea>
+      </div>
+
+      <button type="button" onclick="submitFirstMessage()" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">
+        إرسال وبدء المحادثة 🚀
+      </button>
+      <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- زر البوت المجيب الآلي العائم (بدل الواتساب) -->
+ <a href="bot.html" class="floating-ai-btn" title="المجيب الآلي">
+   <i class="fa-solid fa-robot"></i>
+ </a>
+
+  <!-- الفوتر -->
+  <footer class="site-footer">
+    <p>تواصل معنا عبر:</p>
+    <div class="footer-social">
+      <a data-social-link="facebook" href="https://www.facebook.com/share/1BjkjFqCdR/" target="_blank" rel="noopener noreferrer" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+      <a data-social-link="instagram" href="https://www.instagram.com/neccaryesir?igsi=MTV6cDVzZmw0bHczcg==" target="_blank" rel="noopener noreferrer" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+      <a data-social-link="tiktok" href="https://www.tiktok.com/@shamdolden?_r=1&_t=ZS-996jdiIObQG" target="_blank" rel="noopener noreferrer" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+      <a data-social-link="x" href="https://x.com/shamdolde" target="_blank" rel="noopener noreferrer" title="إكس"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <p class="copyright">جميع الحقوق محفوظة &copy; 2026 <span class="gold-text">الشام الذهبي</span></p>
+  </footer>
+
+  <script src="social-links.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

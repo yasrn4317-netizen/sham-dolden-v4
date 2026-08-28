@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم الشام الذهبي - الملكية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- القائمة العلوية -->
+  <header class="navbar">
+    <button class="menu-toggle-btn" onclick="toggleSidebar()">☰</button>
+    <h1>🏰 لوحة تحكم الشام الذهبي</h1>
+    <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="تبديل الوضع">🌙</button>
+  </header>
+
+  <!-- القائمة الجانبية -->
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <h3>القائمة السريعة</h3>
+      <button class="close-sidebar-btn" onclick="toggleSidebar()">×</button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="admin.html" class="active">📊 لوحة التحكم الرئيسية</a></li>
+      <li><a href="messages.html">📬 صندوق الرسائل الواردة</a></li>
+    </ul>
+  </div>
+  <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="admin-container">
+    <!-- قسم الإحصائيات -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h2>👁️ الزيارات</h2>
+          <p id="visits-count">0</p>
+        </div>
+        <div class="stat-card">
+          <h2>📦 إجمالي المشاريع</h2>
+          <p id="total-projects-count">0</p>
+        </div>
+        <div class="stat-card">
+          <h2>🚀 المشاريع المنشورة</h2>
+          <p id="published-projects-count">0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الإجراءات السريعة -->
+    <section class="quick-actions">
+      <button class="gold-btn" onclick="window.location.href='add-project.html'">➕ إضافة مشروع جديد</button>
+    </section>
+
+    <!-- قسم الفلترة وجدول المشاريع -->
+    <section class="projects-section">
+      <div class="projects-box">
+        <h2>📂 إدارة وتصفية المشاريع</h2>
+        
+        <!-- أدوات البحث والتصفية -->
+        <div class="filter-wrapper">
+          <label for="admin-search-input" class="sr-only" style="display:none;">البحث عن مشروع</label>
+          <input type="text" id="admin-search-input" class="admin-search-bar" placeholder="🔍 ابحث عن اسم مشروع..." oninput="filterAndRenderProjects()">
+          <div class="category-pills">
+            <button class="pill-btn active" onclick="setCategoryFilter('all', this)">الكل</button>
+            <button class="pill-btn" onclick="setCategoryFilter('kn', this)">🛋️ صالونات وتنجيد</button>
+            <button class="pill-btn" onclick="setCategoryFilter('gb', this)">🧱 جبس بورد</button>
+            <button class="pill-btn" onclick="setCategoryFilter('dc', this)">💡 3D وإضاءة</button>
+            <button class="pill-btn" onclick="setCategoryFilter('kd', this)">🧸 غرف نوم الأطفال</button>
+          </div>
+        </div>
+
+        <!-- جدول العرض -->
+        <div class="table-container">
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>المشروع</th>
+                <th>القسم / التصنيف</th>
+                <th>الحالة</th>
+                <th>الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="categories-list">
+              <tr>
+                <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 20px;">جاري تحميل المكتبة... ⏳</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- النافذة المنبثقة للتعديل -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>✏️ تعديل بيانات المشروع</h2>
+        <span class="close-modal" onclick="closeEditModal()">&times;</span>
+      </div>
+      
+      <form id="editProjectForm">
+        <input type="hidden" id="edit-project-id">
+        
+        <div class="form-group">
+          <label for="edit-project-name">اسم المشروع</label>
+          <input type="text" id="edit-project-name" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="edit-category">القسم</label>
+          <select id="edit-category" class="form-control" required>
+            <option value="ديكور ثلاثي الأبعاد وإضاءة مخفية 💡">ديكور ثلاثي الأبعاد وإضاءة مخفية 💡</option>
+            <option value="قسم التنجيد والصالونات 🛋️">قسم التنجيد والصالونات 🛋️</option>
+            <option value="غرف نوم الأطفال 🧸✨">غرف نوم الأطفال 🧸✨</option>
+            <option value="أعمال الجبس بورد 🧱✨">أعمال الجبس بورد 🧱✨</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-description">الوصف</label>
+          <textarea id="edit-description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-city">المدينة</label>
+          <input type="text" id="edit-city" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="edit-status">حالة النشر</label>
+          <select id="edit-status" class="form-control">
+            <option value="منشور">منشور</option>
+            <option value="مخفي">مخفي</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="edit-preview-input">صورة المشروع</label>
+          <input type="file" id="edit-preview-input" accept="image/*" class="form-control">
+          <div>
+            <img id="edit-preview" src="" alt="المعاينة" class="current-img-preview">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="save-modal-btn">💾 حفظ التعديلات</button>
+          <button type="button" class="cancel-modal-btn" onclick="closeEditModal()">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>جميع الحقوق محفوظة © 2026 الشام الذهبي</p>
+  </footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>

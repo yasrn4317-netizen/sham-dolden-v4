@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إعدادات البارون - لوحة التحكم الملكية</title>
+  <link rel="stylesheet" href="baron-settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- شريط التنقل العلوي الملكي -->
+  <header class="navbar">
+    <h2>⚙️ إعدادات المنصة الملكية</h2>
+    <a href="admin.html" class="btn-primary" style="padding: 6px 15px; font-size: 13px;"><i class="fa-solid fa-arrow-right"></i> العودة للوحة التحكم 🔙</a>
+  </header>
+
+  <main class="baron-container" style="max-width: 800px;">
+
+    <!-- قسم معلومات التواصل -->
+    <section class="contact-section">
+      <h3><i class="fa-solid fa-address-book"></i> إضافة رقم أو رابط تواصل</h3>
+      <div id="contact-entry-form" style="display: flex; gap: 10px; align-items: end; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 180px;">
+          <label for="contact-type">نوع التواصل</label>
+          <select id="contact-type" style="width: 100%; margin-top: 5px; padding: 10px;">
+            <option value="phone">رقم الهاتف للاتصال</option>
+            <option value="whatsapp">رقم الواتساب</option>
+            <option value="facebook">رابط فيسبوك</option>
+            <option value="instagram">رابط إنستغرام</option>
+            <option value="tiktok">رابط تيك توك</option>
+            <option value="x">رابط منصة X</option>
+          </select>
+        </div>
+        <div style="flex: 2; min-width: 220px;">
+          <label for="contact-value">الرقم أو الرابط</label>
+          <input type="text" id="contact-value" placeholder="أدخل الرقم أو الرابط" style="width: 100%; margin-top: 5px;">
+        </div>
+        <button id="save-contact-btn" class="btn-primary" type="button">إضافة</button>
+      </div>
+
+      <div style="overflow-x: auto; margin-top: 25px;">
+        <table class="contact-table" style="width: 100%; border-collapse: collapse; text-align: right; font-size: 14px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--accent-color); color: var(--accent-color);">
+              <th style="padding: 10px;">النوع</th>
+              <th style="padding: 10px;">الرقم أو الرابط</th>
+              <th style="padding: 10px; text-align: center;">الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="contact-links-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- نموذج تعديل رد (مخفي ويظهر عند الضغط على زر تعديل) -->
+    <div id="edit-form-container" style="display: none; background: var(--form-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--accent-color); margin-top: 30px; margin-bottom: 20px;">
+      <h4 style="margin-bottom: 12px; font-size: 15px; color: var(--accent-color);"><i class="fa-solid fa-pen-to-square"></i> تعديل السؤال أو الرد الآلي</h4>
+      <input type="hidden" id="edit-id">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <label for="edit-trigger" style="font-size: 13px;">السؤال أو الكلمة المفتاحية:</label>
+        <input type="text" id="edit-trigger" style="padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 6px;" placeholder="السؤال أو الكلمة المفتاحية">
+        
+        <label for="edit-reply" style="font-size: 13px;">الرد الآلي:</label>
+        <textarea id="edit-reply" rows="3" style="padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 6px;" placeholder="الرد المعد مسبقاً"></textarea>
+        
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+          <button id="save-edit-btn" class="btn-primary" style="padding: 6px 15px;">حفظ التعديلات</button>
+          <button id="cancel-edit-btn" style="background: #7f8c8d; color: white; border: none; padding: 6px 15px; border-radius: 6px; cursor: pointer;">إلغاء</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم إدارة ردود المجيب الآلي -->
+    <section class="contact-section" style="margin-top: 30px;">
+      <h3><i class="fa-solid fa-robot"></i> إدارة ردود المجيب الآلي المسبقة</h3>
+      
+      <!-- نموذج إضافة سؤال ورد جديد -->
+      <div style="background: var(--form-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border-color); margin-bottom: 25px;">
+        <h4 style="margin-bottom: 12px; font-size: 15px; color: var(--accent-color);">إضافة استفسار جديد ومعه الرد المخصص</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          
+          <div>
+            <label for="new-page-target" style="font-size: 13px; margin-bottom: 4px; display: block;">القسم أو الصفحة المرتبطة بالرد:</label>
+            <select id="new-page-target" style="width: 100%; padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 6px; outline: none;">
+              <option value="general">🌐 عام (لكافة صفحات الموقع)</option>
+              <option value="bedroom">🛏️ غرف النوم والأطفال</option>
+              <option value="upholstery">🛋️ الكنبايات والمفروشات</option>
+              <option value="gypsum">🏛️ أعمال الجبس بورد</option>
+              <option value="3d">🧊 الديكورات ثلاثية الأبعاد</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="new-trigger" style="font-size: 13px; margin-bottom: 4px; display: block;">السؤال أو الكلمة المفتاحية:</label>
+            <input type="text" id="new-trigger" style="width: 100%; padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 6px;" placeholder="مثلاً: ما هي الأسعار؟">
+          </div>
+
+          <div>
+            <label for="new-reply" style="font-size: 13px; margin-bottom: 4px; display: block;">صيغة الرد الآلي:</label>
+            <textarea id="new-reply" rows="3" style="width: 100%; padding: 10px; background: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-color); border-radius: 6px;" placeholder="صيغة الرد الآلي للعميل..."></textarea>
+          </div>
+          
+          <button id="add-bot-reply-btn" class="btn-primary" style="align-self: flex-start; padding: 8px 20px;"><i class="fa-solid fa-plus"></i> إضافة للردود الآلية</button>
+        </div>
+      </div>
+
+      <!-- جدول عرض الردود الحالية -->
+      <h4 style="margin-bottom: 12px; font-size: 15px; color: var(--text-color);">أرشيف الردود الآلية المخزنة</h4>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: right; font-size: 14px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--accent-color); color: var(--accent-color);">
+              <th style="padding: 10px;">السؤال / المفتاح</th>
+              <th style="padding: 10px;">الرد الآلي</th>
+              <th style="padding: 10px; text-align: center;">الحالة</th>
+              <th style="padding: 10px; text-align: center;">الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="bot-replies-table-body">
+            <tr>
+              <td colspan="4" style="text-align: center; padding: 20px; color: var(--text-muted);">جاري تحميل الردود...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="copyright">جميع الحقوق محفوظة © 2026 الشام الذهبي - لوحة البارون</p>
+  </footer>
+
+  <!-- مكتبة Supabase أو ملف البرمجة المتصل بـ MySQL حسب رغبتك -->
+  <script src="baron-settings.js"></script>
+</body>
+</html>

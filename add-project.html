@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إضافة مشروع | الشام الذهبي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/add-project.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="baron.html" class="back-link"><i class="fa-solid fa-arrow-right"></i> البارون</a>
+    <h1>إضافة مشروع جديد</h1>
+    <span class="brand">الشام الذهبي</span>
+  </header>
+
+  <main class="wrap">
+    <form id="projectForm">
+
+      <section class="card">
+        <h2><i class="fa-solid fa-info-circle"></i> معلومات أساسية</h2>
+
+        <div class="form-group">
+          <label>اسم المشروع</label>
+          <input type="text" id="title" placeholder="مثال: ديكور شاشة مع إضاءة مخفية" required>
+        </div>
+
+        <div class="form-group">
+          <label>القسم</label>
+          <select id="category" required>
+            <option value="">-- اختر القسم --</option>
+            <option value="kn">تنجيد وصالونات (KN)</option>
+            <option value="gb">جبس بورد (GB)</option>
+            <option value="dc">ديكور ثلاثي الأبعاد (DC)</option>
+            <option value="kd">غرف أطفال (KD)</option>
+          </select>
+          <small id="codeHint" class="hint"></small>
+        </div>
+
+        <div class="form-group">
+          <label>كود الموديل (اختياري)</label>
+          <input type="text" id="model_code" placeholder="مثال: KN-1 أو GB-2">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>السعر (اختياري)</label>
+            <input type="text" id="price" placeholder="اتركه فارغاً إن لم تريد عرضه">
+          </div>
+          <div class="form-group">
+            <label>المدينة</label>
+            <input type="text" id="city" placeholder="أنقرة" value="انقرة">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>المواد</label>
+            <input type="text" id="materials" placeholder="جبصين، دهان...">
+          </div>
+          <div class="form-group">
+            <label>مدة التنفيذ</label>
+            <input type="text" id="duration" placeholder="5 أيام">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>الوصف</label>
+          <textarea id="description" rows="4" placeholder="تفاصيل المشروع..."></textarea>
+        </div>
+
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="featured" style="width:auto;">
+          <label for="featured" style="margin:0;">مشروع مميز</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><i class="fa-solid fa-image"></i> صورة المشروع</h2>
+        <p class="note">
+          يمكنك استخدام أحد الخيارين:<br>
+          1) مسار محلي: <strong>images/اسم.jpg</strong><br>
+          2) رابط خارجي: <strong>https://i.ibb.co/...</strong>
+        </p>
+
+        <div class="form-group">
+          <label>مسار الصورة أو الرابط</label>
+          <input type="text" id="cover_image" placeholder="images/sample.jpg أو https://..." required>
+        </div>
+
+        <div class="preview-box" id="previewBox">
+          <span id="previewPlaceholder">المعاينة تظهر هنا بعد إدخال المسار أو الرابط</span>
+          <img id="coverPreview" alt="معاينة" style="display:none;">
+        </div>
+      </section>
+
+      <div id="statusMessage" class="status" style="display:none;"></div>
+
+      <div class="actions">
+        <button type="submit" class="btn-save" id="saveBtn">
+          <i class="fa-solid fa-rocket"></i> نشر المشروع
+        </button>
+        <button type="reset" class="btn-reset" id="resetBtn">مسح</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="/add-project.js"></script>
+</body>
+</html>

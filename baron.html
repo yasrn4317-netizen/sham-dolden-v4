@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مركز القيادة الملكي - الشام الذهبي (لوحة البارون 2.0)</title>
+  <link rel="stylesheet" href="baron.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- خلفية القائمة -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar(true)"></div>
+
+  <!-- القائمة الجانبية -->
+  <aside id="mainSidebar" class="baron-sidebar">
+    <div class="sidebar-head">
+      <strong>👑 البارون</strong>
+      <button type="button" class="sidebar-close" onclick="toggleSidebar(true)" aria-label="إغلاق">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <button type="button" class="nav-btn active" id="nav-dashboard" onclick="switchRoyalTab('dashboard', this); toggleSidebar(true);"><i class="fa-solid fa-chart-pie"></i> لوحة القيادة</button>
+      <button type="button" class="nav-btn" id="nav-projects" onclick="switchRoyalTab('projects', this); toggleSidebar(true);"><i class="fa-solid fa-folder-tree"></i> إدارة المشاريع</button>
+      <button type="button" class="nav-btn" id="nav-messages" onclick="switchRoyalTab('messages', this); toggleSidebar(true);"><i class="fa-solid fa-envelope-open-text"></i> الرسائل</button>
+      <button type="button" class="nav-btn" id="nav-pages" onclick="switchRoyalTab('pages', this); toggleSidebar(true);"><i class="fa-solid fa-file-code"></i> إدارة الصفحات</button>
+      <button type="button" class="nav-btn" id="nav-bot" onclick="switchRoyalTab('bot', this); toggleSidebar(true);"><i class="fa-solid fa-robot"></i> ذكاء البوت</button>
+      <button type="button" class="nav-btn" id="nav-settings" onclick="switchRoyalTab('settings', this); toggleSidebar(true);"><i class="fa-solid fa-gears"></i> الإعدادات</button>
+      <button type="button" class="nav-btn" id="nav-reports" onclick="switchRoyalTab('reports', this); toggleSidebar(true);"><i class="fa-solid fa-chart-line"></i> التقارير</button>
+      <button type="button" class="nav-btn" id="nav-admins" onclick="switchRoyalTab('admins', this); toggleSidebar(true);"><i class="fa-solid fa-user-shield"></i> المديرين</button>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="index.html" target="_blank"><i class="fa-solid fa-globe"></i> عرض الموقع</a>
+    </div>
+  </aside>
+
+  <!-- الرأس الملكي -->
+  <header class="royal-header">
+    <div class="royal-title" style="display:flex;align-items:center;gap:10px;">
+      <button type="button" class="menu-toggle-btn" onclick="toggleSidebar()" title="القائمة" aria-label="القائمة">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div>
+        <span class="royal-badge">النظام الملكي المتقدم 2.0</span>
+        <h2>👑 مركز قيادة البارون</h2>
+      </div>
+    </div>
+    <div class="royal-actions">
+      <div class="bell-container">
+        <div id="system-notifications-bell" onclick="toggleNotificationsMenu(event)" title="الإشعارات">
+          <i class="fa-solid fa-bell"></i>
+          <span id="notif-badge">0</span>
+        </div>
+        
+        <div id="notifications-dropdown">
+          <div class="notif-header">
+            <strong>الإشعارات</strong>
+            <button onclick="clearAllNotifications(event)">حذف الكل</button>
+          </div>
+          <div id="notifications-list-body">
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html" class="royal-home-btn" target="_blank"><i class="fa-solid fa-globe"></i> <span>استعراض الموقع</span></a>
+    </div>
+  </header>
+
+  <!-- شريط التنقل الأقسام الـ 8 الرئيسية -->
+  <nav class="royal-nav-tabs">
+    <button class="royal-tab active" onclick="switchRoyalTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> لوحة القيادة</button>
+    <button class="royal-tab" onclick="switchRoyalTab('projects', this)"><i class="fa-solid fa-folder-tree"></i> إدارة المشاريع</button>
+    <button class="royal-tab" onclick="switchRoyalTab('messages', this)"><i class="fa-solid fa-envelope-open-text"></i> الرسائل</button>
+    <button class="royal-tab" onclick="switchRoyalTab('pages', this)"><i class="fa-solid fa-file-code"></i> إدارة الصفحات</button>
+    <button class="royal-tab" onclick="switchRoyalTab('bot', this)"><i class="fa-solid fa-robot"></i> ذكاء البوت</button>
+    <button class="royal-tab" onclick="switchRoyalTab('settings', this)"><i class="fa-solid fa-gears"></i> إعدادات الموقع</button>
+    <button class="royal-tab" onclick="switchRoyalTab('reports', this)"><i class="fa-solid fa-chart-line"></i> الإحصائيات والتقارير</button>
+    <button class="royal-tab" onclick="switchRoyalTab('admins', this)"><i class="fa-solid fa-user-shield"></i> المديرين والصلاحيات</button>
+  </nav>
+
+  <!-- الحاوية الرئيسية -->
+  <main class="royal-main-container">
+
+    <!-- 1. لوحة القيادة (Dashboard) -->
+    <section id="sec-dashboard" class="royal-section active-section">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-signal"></i> مؤشرات العمليات الحية</h3>
+        <div class="royal-grid-status">
+          <div class="r-status-box">📁 عدد المشاريع <span id="stat-projects" class="skeleton">0</span></div>
+          <div class="r-status-box">⭐ المشاريع المميزة <span id="stat-featured" class="skeleton">0</span></div>
+          <div class="r-status-box">📩 الرسائل الجديدة <span id="stat-messages" class="skeleton">0</span></div>
+          <div class="r-status-box">👀 عدد الزوار <span id="stat-visitors" class="skeleton">1,420</span></div>
+          <div class="r-status-box">🤖 حالة البوت <span style="color:#2ecc71;">نشط 🟢</span></div>
+          <div class="r-status-box" id="db-status">💾 قاعدة البيانات <span class="skeleton">جاري...</span></div>
+          <div class="r-status-box">📂 التخزين المستخدم <span style="color:var(--royal-gold);">42 MB / 1 GB</span></div>
+          <div class="r-status-box" onclick="switchRoyalTab('reports', document.querySelector('.royal-tab:nth-child(7)'))" style="cursor:pointer;">🔔 آخر نشاط <span style="font-size:12px; color:var(--royal-muted);">انقر للعرض</span></div>
+        </div>
+      </div>
+
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-database"></i> أدوات الصيانة والنسخ الاحتياطي</h3>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button onclick="createSystemBackup()" class="royal-btn-main"><i class="fa-solid fa-download"></i> إنشاء نسخة احتياطية</button>
+          <button onclick="downloadDatabaseJSON()" class="royal-btn-main" style="background:#3498db; color:#fff;"><i class="fa-solid fa-file-arrow-down"></i> تحميل قاعدة البيانات (JSON)</button>
+          <label class="royal-btn-main" style="background:#27ae60; color:#fff; cursor:pointer; margin:0;">
+            <i class="fa-solid fa-upload"></i> استعادة نسخة احتياطية <input type="file" id="backup-file-input" style="display:none;" onchange="restoreSystemBackup(event)">
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. إدارة المشاريع (Projects Management) -->
+    <section id="sec-projects" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-plus-circle"></i> نشر مشروع جديد</h3>
+        <form id="quick-project-form" class="royal-form">
+          <label class="sr-only" for="p-title">اسم المشروع</label>
+          <input type="text" id="p-title" placeholder="اسم المشروع *" class="royal-input" required>
+
+          <label class="sr-only" for="p-category">قسم المشروع</label>
+          <select id="p-category" class="royal-input" required>
+            <option value="">-- اختر القسم --</option>
+            <option value="kn">تنجيد وصالونات (KN)</option>
+            <option value="gb">جبس بورد (GB)</option>
+            <option value="dc">ديكور ثلاثي الأبعاد (DC)</option>
+            <option value="kd">غرف أطفال (KD)</option>
+          </select>
+
+          <label class="sr-only" for="p-code">كود الموديل</label>
+          <input type="text" id="p-code" placeholder="كود الموديل (اختياري) مثال: KN-1" class="royal-input">
+          <label class="sr-only" for="p-price">سعر المشروع</label>
+          <input type="text" id="p-price" placeholder="السعر (اختياري)" class="royal-input">
+          <label class="sr-only" for="p-city">مدينة المشروع</label>
+          <input type="text" id="p-city" placeholder="المدينة" class="royal-input" value="انقرة">
+          <label class="sr-only" for="p-materials">مواد المشروع</label>
+          <input type="text" id="p-materials" placeholder="المواد (جبصين، دهان...)" class="royal-input">
+          <label class="sr-only" for="p-duration">مدة تنفيذ المشروع</label>
+          <input type="text" id="p-duration" placeholder="مدة التنفيذ (مثال: 5 أيام)" class="royal-input">
+
+          <label class="sr-only" for="p-desc">وصف المشروع</label>
+          <textarea id="p-desc" placeholder="وصف المشروع..." class="royal-input full" rows="3"></textarea>
+
+          <label style="grid-column: span 2; display:flex; align-items:center; gap:10px; color:#ddd; font-size:14px; cursor:pointer;">
+            <input type="checkbox" id="p-featured" style="width:18px;height:18px;">
+            <span>⭐ مشروع مميز (يظهر في القسم المميز)</span>
+          </label>
+
+          <div style="grid-column: span 2; background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.25); border-radius:10px; padding:10px 12px; font-size:12px; color:#aaa; line-height:1.6;">
+            الصورة: مسار محلي <strong style="color:#d4af37;">images/اسم.jpg</strong>
+            أو رابط <strong style="color:#d4af37;">https://i.ibb.co/...</strong>
+          </div>
+
+          <label class="sr-only" for="p-image">مسار صورة المشروع</label>
+          <input type="text" id="p-image" placeholder="مسار الصورة أو الرابط *" class="royal-input full" required>
+
+          <div id="p-preview-box" style="grid-column:span 2; min-height:120px; border:1px dashed rgba(212,175,55,0.3); border-radius:12px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#111;">
+            <span id="p-preview-ph" style="color:#666;font-size:13px;">المعاينة تظهر هنا</span>
+            <img id="p-preview-img" alt="" style="display:none;width:100%;max-height:200px;object-fit:cover;">
+          </div>
+
+          <button type="submit" class="royal-btn-main" style="grid-column: span 2;"><i class="fa-solid fa-rocket"></i> نشر المشروع</button>
+        </form>
+      </div>
+
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-list-check"></i> أرشيف المشاريع والتحكم الكامل</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+          <label class="sr-only" for="proj-search">البحث في المشاريع</label>
+          <input type="text" id="proj-search" placeholder="بحث بالاسم أو الكود..." class="royal-input" style="flex: 2;" oninput="filterProjectsTable()">
+          <label class="sr-only" for="proj-filter-cat">تصفية المشاريع حسب القسم</label>
+          <select id="proj-filter-cat" class="royal-input" style="flex: 1;" onchange="filterProjectsTable()">
+            <option value="all">كل الأقسام</option>
+            <option value="kn">تنجيد (KN)</option>
+            <option value="gb">جبس (GB)</option>
+            <option value="dc">3D (DC)</option>
+            <option value="kd">أطفال (KD)</option>
+          </select>
+        </div>
+        <div class="royal-table-container">
+          <table class="royal-table">
+            <thead>
+              <tr>
+                <th>الصورة</th>
+                <th>الاسم والكود</th>
+                <th>القسم</th>
+                <th>المدينة</th>
+                <th>الحالة</th>
+                <th>الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="admin-projects-table-body">
+              <tr><td colspan="6" style="text-align:center;">جاري تحميل المشاريع...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. الرسائل (Messages Center) -->
+    <section id="sec-messages" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-envelope-open-text"></i> صندوق رسائل الزبائن</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+          <button onclick="filterMessages('all')" class="royal-btn-main" style="background:#333; color:#fff;">الكل</button>
+          <button onclick="filterMessages('unread')" class="royal-btn-main" style="background:#e74c3c; color:#fff;">✅ غير مقروءة</button>
+          <button onclick="filterMessages('read')" class="royal-btn-main" style="background:#27ae60; color:#fff;">📖 مقروءة</button>
+          <button onclick="filterMessages('important')" class="royal-btn-main" style="background:var(--royal-gold); color:#000;">⭐ مهمة</button>
+        </div>
+        <div id="admin-messages-container" class="royal-list-container">
+          <p style="text-align:center; color:var(--royal-muted);">جاري تحميل الرسائل...</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. إدارة الصفحات (Pages Management) -->
+    <section id="sec-pages" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-file-code"></i> خريطة الصفحات والملفات</h3>
+        <div class="royal-table-container">
+          <table class="royal-table">
+            <thead>
+              <tr>
+                <th>اسم الصفحة</th>
+                <th>مسار الملف</th>
+                <th>آخر تعديل</th>
+                <th>عدد الزيارات</th>
+                <th>الحالة</th>
+                <th>الخيارات</th>
+              </tr>
+            </thead>
+            <tbody id="pages-management-tbody">
+              <tr><td colspan="6" style="text-align:center;">جاري تحليل الصفحات...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ذكاء البوت (Bot Intelligence) -->
+    <section id="sec-bot" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-brain"></i> إدارة ردود المجيب الآلي المتقدمة</h3>
+        <form id="quick-bot-form" class="royal-form">
+          <input type="hidden" id="bot-edit-id" value="">
+
+          <label for="bot-target" style="grid-column:span 2;color:#d4af37;font-size:13px;font-weight:700;">1) صفحة الرد</label>
+          <select id="bot-target" class="royal-input" style="grid-column:span 2;">
+            <option value="general">عام (كل الصفحات)</option>
+            <option value="index">الرئيسية</option>
+            <option value="kn">التنجيد</option>
+            <option value="gb">الجبس بورد</option>
+            <option value="dc">ثلاثي الأبعاد</option>
+            <option value="kd">غرف الأطفال</option>
+          </select>
+
+          <label for="bot-trigger" style="grid-column:span 2;color:#d4af37;font-size:13px;font-weight:700;">2) الكلمة المفتاحية / السؤال</label>
+          <input type="text" id="bot-trigger" placeholder="مثال: مرحبا أو بدي طقم كنبايات" class="royal-input" style="grid-column:span 2;" required>
+
+          <label for="bot-reply" style="grid-column:span 2;color:#d4af37;font-size:13px;font-weight:700;">3) نص الرد الآلي</label>
+          <textarea id="bot-reply" placeholder="اكتب الرد الذي سيظهر للزائر..." class="royal-input full" rows="3" required></textarea>
+
+          <button type="submit" class="royal-btn-main" id="bot-save-btn" style="grid-column: span 2;">
+            <i class="fa-solid fa-robot"></i> <span id="bot-save-label">حفظ ونشر الرد</span>
+          </button>
+          <button type="button" id="bot-cancel-edit" onclick="cancelBotEdit()" class="royal-btn-main" style="grid-column:span 2;display:none;background:#555;color:#fff;">
+            إلغاء التعديل
+          </button>
+        </form>
+      </div>
+
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-list"></i> أرشيف ردود البوت</h3>
+        <div id="bot-replies-list" style="display:flex; flex-direction:column; gap:8px;">
+          <p style="text-align:center;">جاري جلب قواعد البوت...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. إعدادات الموقع — كل حقل في بطاقة منفصلة -->
+    <section id="sec-settings" class="royal-section" style="display: none;">
+      <div id="site-settings-form">
+        <div class="royal-card-box royal-single-setting-box" style="margin-bottom:14px;">
+          <h3><label for="set-name"><i class="fa-solid fa-signature"></i> اسم الموقع</label></h3>
+          <input type="text" id="set-name" placeholder="مثال: الشام الذهبي للديكور" class="royal-input" style="width:100%;">
+          <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="site_name" data-setting-input="set-name">حفظ اسم الموقع</button>
+        </div>
+        <div class="royal-card-box royal-brand-assets-box" style="margin-bottom:14px;">
+          <h3><i class="fa-solid fa-images"></i> الشعار وأيقونة المتصفح</h3>
+          <div class="royal-brand-asset-field">
+            <label for="set-logo"><i class="fa-solid fa-image"></i> شعار الموقع</label>
+            <input type="text" id="set-logo" placeholder="images/logo.png" class="royal-input">
+            <small>أدخل مسار الصورة الموجودة داخل مجلد images</small>
+            <img id="set-logo-preview" class="royal-brand-preview" alt="معاينة شعار الموقع" hidden>
+            <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="logo" data-setting-input="set-logo">حفظ الشعار</button>
+          </div>
+          <div class="royal-brand-asset-field">
+            <label for="set-email"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</label>
+            <input type="email" id="set-email" placeholder="info@example.com" class="royal-input">
+            <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="email" data-setting-input="set-email">حفظ البريد الإلكتروني</button>
+          </div>
+          <div class="royal-brand-asset-field">
+            <label for="set-favicon"><i class="fa-solid fa-icons"></i> أيقونة المتصفح</label>
+            <input type="text" id="set-favicon" placeholder="images/favicon.png أو images/favicon.ico" class="royal-input">
+            <small>يفضل استخدام صورة مربعة بصيغة PNG أو ICO من مجلد images</small>
+            <img id="set-favicon-preview" class="royal-favicon-preview" alt="معاينة أيقونة المتصفح" hidden>
+            <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="favicon" data-setting-input="set-favicon">حفظ الأيقونة</button>
+          </div>
+          <div class="royal-brand-asset-field">
+            <label for="set-city"><i class="fa-solid fa-location-dot"></i> المدينة</label>
+            <input type="text" id="set-city" placeholder="أنقرة" class="royal-input">
+            <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="city" data-setting-input="set-city">حفظ المدينة</button>
+          </div>
+        </div>
+        <div class="royal-card-box royal-contact-settings-box" style="margin-bottom:14px;">
+          <h3><i class="fa-solid fa-address-book"></i> أرقام وروابط التواصل</h3>
+          <div id="royal-contact-entry-form" class="royal-contact-entry-form">
+            <label class="sr-only" for="royal-contact-type">نوع التواصل</label>
+            <select id="royal-contact-type" class="royal-input">
+              <option value="phone">رقم الهاتف للاتصال</option>
+              <option value="whatsapp">رقم الواتساب</option>
+              <option value="facebook">رابط فيسبوك</option>
+              <option value="instagram">رابط إنستغرام</option>
+              <option value="tiktok">رابط تيك توك</option>
+              <option value="x">رابط منصة X</option>
+            </select>
+            <label class="sr-only" for="royal-contact-value">رقم أو رابط التواصل</label>
+            <input type="text" id="royal-contact-value" placeholder="أدخل الرقم أو الرابط" class="royal-input">
+            <button type="button" id="royal-save-contact-btn" class="royal-btn-main"><i class="fa-solid fa-plus"></i> إضافة</button>
+          </div>
+          <div class="royal-table-container royal-contact-table-wrap">
+            <table class="royal-table royal-contact-table">
+              <thead><tr><th>النوع</th><th>الرقم أو الرابط</th><th>الإجراءات</th></tr></thead>
+              <tbody id="royal-contact-links-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="royal-card-box royal-single-setting-box" style="margin-bottom:14px;">
+          <h3><label for="set-color"><i class="fa-solid fa-palette"></i> اللون الأساسي</label></h3>
+          <input type="color" id="set-color" value="#d4af37" class="royal-input" style="width:100%;height:48px;cursor:pointer;">
+          <button type="button" class="royal-btn-main royal-setting-save" data-setting-field="color" data-setting-input="set-color">حفظ اللون</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. الإحصائيات والتقارير وسجل النشاط (Reports & Activity Log) -->
+    <section id="sec-reports" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> سجل النشاط والعمليات (Audit Log)</h3>
+        <div id="audit-log-container" style="display:flex; flex-direction:column; gap:8px; max-height:400px; overflow-y:auto;">
+          <p style="text-align:center;">جاري تحميل سجل النشاطات اليومية...</p>
+        </div>
+      </div>
+      <div class="royal-card-box notifications-table-box">
+        <h3><i class="fa-solid fa-bell"></i> جدول الإشعارات</h3>
+        <div class="royal-table-container">
+          <table class="royal-table">
+            <thead>
+              <tr><th>النوع</th><th>العنوان</th><th>الرسالة</th><th>التاريخ</th><th>الحالة</th></tr>
+            </thead>
+            <tbody id="notifications-table-body">
+              <tr><td colspan="5" style="text-align:center;">جاري تحميل الإشعارات...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. إدارة المديرين والصلاحيات (Admins & Roles) -->
+    <section id="sec-admins" class="royal-section" style="display: none;">
+      <div class="royal-card-box">
+        <h3><i class="fa-solid fa-user-shield"></i> فريق الإدارة وصلاحيات الوصول</h3>
+        <div class="royal-table-container">
+          <table class="royal-table">
+            <thead>
+              <tr>
+                <th>اسم المدير</th>
+                <th>البريد الإلكتروني</th>
+                <th>الصلاحية</th>
+                <th>آخر دخول</th>
+                <th>التحكم</th>
+              </tr>
+            </thead>
+            <tbody id="admins-table-body">
+              <tr>
+                <td>البارون (الرئيسي)</td>
+                <td>admin@alsham.com</td>
+                <td><span style="color:var(--royal-gold); font-weight:bold;">مدير عام (Super Admin)</span></td>
+                <td>اليوم، 05:30 م</td>
+                <td><button class="royal-home-btn" style="padding:2px 8px;">الصلاحيات</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="royal-footer">
+    <p>جميع الحقوق محفوظة © 2026 الشام الذهبي - لوحة البارون الملكية (مركز القيادة الاحترافي 2.0)</p>
+  </footer>
+
+  <div id="delete-project-confirm" role="dialog" aria-modal="true" aria-labelledby="delete-project-title" style="display:none;position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.72);align-items:center;justify-content:center;padding:16px;">
+    <div style="width:100%;max-width:390px;background:#1a1a1f;border:1px solid rgba(212,175,55,.35);border-radius:14px;padding:22px;text-align:center;box-shadow:0 16px 45px rgba(0,0,0,.45);">
+      <div style="width:48px;height:48px;margin:0 auto 12px;display:grid;place-items:center;border-radius:50%;background:rgba(243,156,18,.16);color:#f39c12;font-size:22px;">!</div>
+      <h3 id="delete-project-title" style="margin:0 0 8px;color:#fff;font-size:18px;">هل تريد حذف المشروع؟</h3>
+      <p id="delete-project-name" style="margin:0 0 20px;color:#aaa;font-size:13px;"></p>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button type="button" onclick="confirmProjectDelete()" style="border:0;border-radius:8px;padding:10px 22px;background:#f39c12;color:#111;font-weight:800;cursor:pointer;">نعم، احذف</button>
+        <button type="button" onclick="cancelProjectDelete()" style="border:1px solid #555;border-radius:8px;padding:10px 22px;background:#333;color:#fff;font-weight:700;cursor:pointer;">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="baron.js"></script>
+
+  <!-- نافذة تعديل المشروع -->
+  <div id="edit-project-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;padding:16px;">
+    <div style="background:#1a1a1f;border:1px solid rgba(212,175,55,0.35);border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <h3 style="color:#d4af37;margin:0;font-size:1.05rem;">تعديل المشروع</h3>
+        <button type="button" onclick="closeEditModal()" style="background:transparent;border:none;color:#aaa;font-size:1.3rem;cursor:pointer;">✕</button>
+      </div>
+      <form id="edit-project-form" style="display:flex;flex-direction:column;gap:10px;">
+        <input type="hidden" id="edit-id">
+        <label class="sr-only" for="edit-title">اسم المشروع</label>
+        <input type="text" id="edit-title" placeholder="اسم المشروع" class="royal-input" required>
+        <label class="sr-only" for="edit-code">كود الموديل</label>
+        <input type="text" id="edit-code" placeholder="كود الموديل" class="royal-input">
+        <label class="sr-only" for="edit-category">قسم المشروع</label>
+        <select id="edit-category" class="royal-input">
+          <option value="kn">تنجيد (KN)</option>
+          <option value="gb">جبس (GB)</option>
+          <option value="dc">3D (DC)</option>
+          <option value="kd">أطفال (KD)</option>
+        </select>
+        <label class="sr-only" for="edit-city">مدينة المشروع</label>
+        <input type="text" id="edit-city" placeholder="المدينة" class="royal-input">
+        <label class="sr-only" for="edit-image">مسار صورة المشروع</label>
+        <input type="text" id="edit-image" placeholder="مسار أو رابط الصورة" class="royal-input">
+        <label class="sr-only" for="edit-status">حالة المشروع</label>
+        <select id="edit-status" class="royal-input">
+          <option value="منشور">منشور</option>
+          <option value="مخفي">مخفي</option>
+        </select>
+        <label class="sr-only" for="edit-desc">وصف المشروع</label>
+        <textarea id="edit-desc" placeholder="الوصف" class="royal-input" rows="3"></textarea>
+        <div style="display:flex;gap:10px;margin-top:6px;">
+          <button type="submit" class="royal-btn-main" style="flex:1;">حفظ التعديلات</button>
+          <button type="button" onclick="closeEditModal()" style="background:#333;color:#fff;border:none;border-radius:8px;padding:10px 16px;cursor:pointer;">إلغاء</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

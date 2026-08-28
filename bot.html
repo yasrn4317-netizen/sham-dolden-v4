@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المجيب الآلي - الشام الذهبي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="bot.css">
+</head>
+<body>
+
+  <header class="bot-header">
+    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+    <div class="bot-brand">
+      <i class="fa-solid fa-robot gold-icon"></i>
+      <span>مجيب الشام الذهبي</span>
+    </div>
+  </header>
+
+  <main class="chat-box" id="chat-box">
+    <div class="message bot-message" id="welcome-msg">
+      <div class="avatar"><img src="images/icon.png" alt="صورة المجيب الآلي" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><i class="fas fa-robot" aria-hidden="true"></i></div>
+      <div class="text">
+        مرحباً بك في الشام الذهبي 👋<br>
+        كيف أقدر أساعدك؟ اختر سؤالاً سريعاً أو اكتب كود الموديل مثل <b>KD-1</b>
+        <div class="quick-buttons-container" id="quick-buttons"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="chat-input-bar">
+    <input type="text" id="user-input" placeholder="اكتب استفسارك هنا..." autocomplete="off">
+    <button id="send-btn" title="إرسال"><i class="fa-solid fa-paper-plane"></i></button>
+  </footer>
+  <script src="social-links.js"></script>
+  <script src="bot.js"></script>
+</body>
+</html>

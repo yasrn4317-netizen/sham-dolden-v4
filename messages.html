@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز الإشعارات والطلبات - الشام الذهبي</title>
+    <!-- خط Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- تنسيقات الصفحة المستقلة -->
+    <link rel="stylesheet" href="messages.css">
+</head>
+<body>
+
+    <!-- الشريط العلوي (Navbar) -->
+    <header class="navbar">
+        <div class="nav-right">
+            <button class="menu-toggle-btn" onclick="toggleSidebar()" aria-label="فتح القائمة">
+                ☰
+            </button>
+            <h1 class="nav-title">مركز الإشعارات والرسائل</h1>
+        </div>
+        <div class="nav-left">
+            <span class="theme-icon">🌙</span>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية (Sidebar) -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>القائمة السريعة</h3>
+            <button class="sidebar-close-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="baron.html">📊 لوحة التحكم الرئيسية</a></li>
+            <li><a href="baron.html#projects">📁 إدارة التصنيفات والمنتجات</a></li>
+            <li><a href="messages.html" class="active">🔔 الإشعارات والطلبات</a></li>
+            <li><a href="chat.html">💬 المحادثات والشات المباشر</a></li>
+            <li><a href="baron.html#settings">⚙️ إعدادات الموقع</a></li>
+        </ul>
+    </aside>
+
+    <!-- طبقة التعتيم الخلفية -->
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- عنوان الصفحة -->
+        <section class="page-header">
+            <h2>🔔 مركز الإشعارات والطلبات الواردة</h2>
+        </section>
+
+        <!-- كارت الإحصائيات -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📩</div>
+                <div class="stat-info">
+                    <h3>إجمالي طلبات النموذج والإشعارات</h3>
+                    <p class="stat-number" id="total-messages-count">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- صندوق الرسائل والإشعارات -->
+        <section class="messages-section">
+            <div class="messages-header">
+                <div class="header-title-wrap">
+                    <span class="section-icon">📥</span>
+                    <h3>إشعارات "اتصل بنا" وتنبهات الصفحات</h3>
+                </div>
+                <a href="chat.html" class="go-chat-link">💬 الذهاب لغرفة الشات المباشر ←</a>
+            </div>
+
+            <!-- قائمة الرسائل المستلمة -->
+            <div class="messages-list" id="messages-container">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>جاري تحميل الرسائل والإشعارات...</p>
+                </div>
+            </div>
+            <div class="messages-status" id="messages-status" role="status" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <!-- الفوتر Footer -->
+ <footer class="site-footer">
+     <p>تواصل معنا عبر:</p>
+    <!-- التنبيه السريع Toast -->
+    <div class="toast" id="toast"></div>
+     <div class="footer-social">
+         <a data-social-link="facebook" href="https://www.facebook.com/share/1BjkjFqCdR/" target="_blank" rel="noopener noreferrer" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+         <a data-social-link="instagram" href="https://www.instagram.com/neccaryesir?igsi=MTV6cDVzZmw0bHczcg==" target="_blank" rel="noopener noreferrer" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+         <a data-social-link="tiktok" href="https://www.tiktok.com/@shamdolden?_r=1&_t=ZS-996jdiIObQG" target="_blank" rel="noopener noreferrer" title="تيك توك"><i class="fab fa-tiktok"></i></a>
+         <a data-social-link="x" href="https://x.com/shamdolde" target="_blank" rel="noopener noreferrer" title="إكس"><i class="fa-brands fa-x-twitter"></i></a>
+     </div>
+     <p class="copyright">جميع الحقوق محفوظة &copy; 2026 <span class="gold-text">الشام الذهبي</span></p>
+ </footer>
+    <!-- كود JavaScript الخاص بالصفحة -->
+    <script src="social-links.js"></script>
+    <script src="messages.js"></script>
+</body>
+</html>

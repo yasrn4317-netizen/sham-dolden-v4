@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشام الذهبي | التنجيد وتجديد المفروشات الفاخرة</title>
+    <!-- خط القاهرة الملكي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ملف الـ CSS الملكي الشامل -->
+    <link rel="stylesheet" href="upholstery.css">
+</head>
+<body>
+
+    <!-- 1️⃣ الهيدر العلوي الملكي -->
+    <header class="main-header">
+        <button class="menu-btn" onclick="toggleMenu()" title="القائمة الرئيسية" aria-label="القائمة">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="logo-area">
+            <span>الشام الذهبي</span>
+            <i class="fa-solid fa-couch logo-icon"></i>
+        </a>
+
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="تغيير الوضع" aria-label="تبديل الوضع">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+    </header>
+
+    <!-- 2️⃣ القائمة الجانبية (Side Menu) -->
+    <div class="side-menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-header">
+            <span>القائمة الرئيسية</span>
+            <i class="fa-solid fa-xmark close-btn" onclick="toggleMenu()"></i>
+        </div>
+        <ul class="side-menu-links">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+            <li><a href="gypsum.html"><i class="fa-solid fa-layer-group"></i> أعمال الجبس بورد</a></li>
+            <li><a href="kids-room.html"><i class="fa-solid fa-child-reaching"></i> غرف الأطفال</a></li>
+            <li><a href="upholstery.html" class="active"><i class="fa-solid fa-couch"></i> الكنبايات والمفروشات</a></li>
+            <li><a href="3d.html"><i class="fa-solid fa-cube"></i> الديكورات ثلاثية الأبعاد</a></li>
+            <li><a href="bot.html"><i class="fa-solid fa-robot"></i> المجيب الآلي / البوت</a></li>
+            <li><a href="chat.html"><i class="fa-solid fa-comments"></i> صفحة الدردشة والمراسلة</a></li>
+            <li><hr style="border-color: var(--border-gold); opacity: 0.3; margin: 5px 0;"></li>
+            <li><a href="terms.html"><i class="fa-solid fa-file-contract"></i> اتفاقية المستخدم</a></li>
+            <li><a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> سياسة الخصوصية</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-headset"></i> اتصل بنا</a></li>
+        </ul>
+    </div>
+
+    <!-- 3️⃣ البانر الترحيبي (Hero Section) -->
+    <section class="hero-section">
+        <div class="hero-badge">✨ إتقان وتجديد بلمسة ملكية</div>
+        <h1 class="hero-title">تنجيد وتفصيل <span class="gold-text">المفروشات الفاخرة</span></h1>
+        <p class="hero-desc">نحول أثاثك القديم إلى تحفة فنية، ونفصل أحدث أطقم الكنب والركنات بأفخر أنواع الأقمشة والإسفنج عالي الكثافة مع ضمان الدقة والعمر الطويل.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-num">+500</span>
+                <span class="stat-label">طقم منفذ</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">جودة مضمونة</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">15+</span>
+                <span class="stat-label">سنة خبرة</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ شريط البحث المباشر -->
+    <section class="search-section">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="ابحث عن موديل الكنب أو نوع القماش..." oninput="filterUpholsteryModels()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </section>
+
+    <!-- 5️⃣ شبكة عرض الكنبايات والموديلات -->
+    <main class="container">
+        <div class="projects-grid" id="projects-container">
+            <div style="grid-column: 1/-1; text-align:center; color: var(--gold-primary); padding: 40px; font-weight: bold;">
+                ⏳ جاري تحميل موديلات الكنبايات والمفروشات الملكية...
+            </div>
+        </div>
+    </main>
+
+    <!-- 6️⃣ نموذج اتصل بنا -->
+    <section class="contact-section">
+        <div class="contact-box">
+            <h3>تواصل معنا مباشرة</h3>
+            <p class="contact-desc">يسعدنا تلقي استفساراتكم وطلباتكم، وسنتواصل معكم في أقرب وقت.</p>
+            
+            <form id="visitor-msg-form">
+                <div class="form-group">
+                    <input type="text" id="visitor-name" placeholder="اسمك الكريم" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="visitor-phone" placeholder="رقم الهاتف أو البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="visitor-message" rows="4" placeholder="اكتب رسالتك أو استفسارك هنا..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="send-msg-btn">إرسال الرسالة</button>
+            </form>
+            <div id="form-success-msg" style="display: none; margin-top: 15px; text-align: center; font-weight: bold; padding: 10px; border-radius: var(--radius-md);"></div>
+        </div>
+    </section>
+
+    <!-- 7️⃣ الفوتر السفلي وزر البوت العائم -->
+    <footer class="main-footer">
+        <div class="footer-contact-title">تواصل معنا عبر منصاتنا الاجتماعية</div>
+        <div class="social-icons">
+            <a data-social-link="instagram" href="https://www.instagram.com/neccaryesir?igsi=MTV6cDVzZmw0bHczcg==" target="_blank" rel="noopener noreferrer" class="social-btn" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+            <a data-social-link="facebook" href="https://www.facebook.com/share/1BjkjFqCdR/" target="_blank" rel="noopener noreferrer" class="social-btn" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a data-social-link="tiktok" href="https://www.tiktok.com/@shamdolden?_r=1&_t=ZS-996jdiIObQG" target="_blank" rel="noopener noreferrer" class="social-btn" title="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+            <a data-social-link="x" href="https://x.com/shamdolde" target="_blank" rel="noopener noreferrer" class="social-btn" title="إكس"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <p class="footer-copy">جميع الحقوق محفوظة © 2026 | الشام الذهبي للديكور والتنجيد</p>
+    </footer>
+
+    <a href="bot.html" class="floating-ai-btn" title="اسأل المجيب الآلي">
+        <i class="fa-solid fa-robot"></i>
+    </a>
+
+    <!-- ملف الجافاسكريبت الخارجي -->
+    <script src="social-links.js"></script>
+    <script src="upholstery.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الشروط والأحكام - الشام الذهبي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0f0f11;
+      --card: #18181c;
+      --gold: #d4af37;
+      --gold-grad: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --border: rgba(212, 175, 55, 0.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      background: #16161a;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--gold-grad);
+      color: #000;
+      border-color: transparent;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 28px auto;
+      padding: 0 16px 40px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .intro h1 {
+      font-size: 1.45rem;
+      background: var(--gold-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px;
+      overflow: hidden;
+    }
+
+    .term-item {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .term-item:last-child {
+      border-bottom: none;
+    }
+
+    .term-header {
+      padding: 14px 16px;
+      color: var(--gold);
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    .term-header i {
+      transition: transform 0.25s;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .term-header.open i {
+      transform: rotate(180deg);
+    }
+
+    .term-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 16px;
+      color: #cfcfcf;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .term-body.open {
+      max-height: 600px;
+      padding: 0 16px 16px;
+    }
+
+    .term-body ul {
+      margin: 8px 0 0 18px;
+    }
+
+    .term-body li {
+      margin-bottom: 6px;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .note-box strong {
+      color: var(--gold);
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #777;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 480px) {
+      .intro h1 { font-size: 1.25rem; }
+      .term-header { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <i class="fa-solid fa-file-contract"></i>
+      اتفاقية الاستخدام
+    </div>
+    <a href="index.html" class="nav-btn">
+      <i class="fa-solid fa-house"></i> الرئيسية
+    </a>
+  </header>
+
+  <main class="container">
+    <div class="intro">
+      <h1>الشروط والأحكام</h1>
+      <p>
+        باستخدامك موقع ومعمل <strong style="color:var(--gold)">الشام الذهبي</strong>،
+        فإنك توافق على الشروط التالية المتعلقة بالطلبات والتنفيذ والصور والخصوصية.
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="term-item">
+        <div class="term-header open" onclick="toggleTerm(this)">
+          <span>1. طبيعة الخدمات</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body open">
+          نقدّم خدمات الديكور الداخلي والتنفيذ، وتشمل على سبيل المثال:
+          <ul>
+            <li>أعمال الجبس بورد والأسقف والجدران</li>
+            <li>الديكورات ثلاثية الأبعاد والإضاءة المخفية</li>
+            <li>تنجيد الكنبايات والمفروشات</li>
+            <li>تصاميم غرف الأطفال والتشطيبات المرتبطة بها</li>
+          </ul>
+          التفاصيل النهائية لكل طلب تُحدد حسب معاينة المكان أو القياسات المتفق عليها.
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>2. الطلبات والمعاينة</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          <ul>
+            <li>الطلب عبر الموقع أو الواتساب أو المحادثة يُعد استفساراً أولياً وليس تعاقداً نهائياً.</li>
+            <li>يُعتمد التنفيذ بعد الاتفاق على القياسات، المواد، السعر، ومدة العمل.</li>
+            <li>قد نحتاج معاينة ميدانية لبعض المشاريع قبل تأكيد السعر النهائي.</li>
+            <li>أي تعديل بعد بدء التنفيذ قد يؤثر على التكلفة أو المدة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>3. الأسعار والدفع</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          <ul>
+            <li>الأسعار المعروضة في الموقع استرشادية وقد تختلف حسب المقاس والخامة وموقع التنفيذ.</li>
+            <li>يتم الاتفاق على السعر النهائي قبل البدء.</li>
+            <li>قد يُطلب عربون لتأكيد الحجز وبدء العمل، ويُحدّد ذلك عند الاتفاق.</li>
+            <li>الدفعات المتبقية تُسدد حسب ما يُتفق عليه (عند التسليم أو على مراحل).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>4. مدة التنفيذ والتسليم</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          <ul>
+            <li>مدة التنفيذ تقديرية وتُحدد حسب حجم المشروع وظروف الموقع.</li>
+            <li>قد تتأثر المدة بتأخر اعتماد التصاميم، توفر المواد، أو ظروف خارجة عن الإرادة.</li>
+            <li>التسليم يتم بعد مراجعة العمل مع العميل والتأكد من مطابقته للاتفاق.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>5. التعديلات والإلغاء</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          <ul>
+            <li>طلب تعديل جوهري بعد بدء التنفيذ قد يترتب عليه تكلفة إضافية.</li>
+            <li>في حال إلغاء الطلب بعد تأكيد العربون وبدء التجهيز، يُخصم مقابل ما تم صرفه من مواد أو عمل.</li>
+            <li>تفاصيل الإلغاء والخصم تُوضح عند الاتفاق حسب حالة كل مشروع.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>6. الصور والملكية الفكرية</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          جميع الصور والتصاميم المعروضة في الموقع هي ملك لمعمل الشام الذهبي
+          (أو مستخدمة بإذن). لا يجوز نسخها أو إعادة استخدامها لأغراض تجارية
+          دون موافقة مسبقة. نحتفظ بحق تصوير بعض الأعمال المكتملة لأغراض العرض
+          مع احترام خصوصية العميل عند الطلب.
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>7. الخصوصية وبيانات التواصل</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          نستخدم بياناتك (مثل الاسم ورقم الهاتف والرسائل) للرد على استفساراتك
+          ومتابعة الطلب فقط. لا نبيع هذه البيانات ولا نشاركها مع جهات خارجية
+          إلا إذا طُلب ذلك نظاماً. لمزيد من التفاصيل راجع
+          <a href="privacy.html" style="color:var(--gold);">سياسة الخصوصية</a>.
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>8. حدود المسؤولية</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          <ul>
+            <li>نلتزم بتنفيذ العمل وفق الاتفاق والمعايير المتفق عليها.</li>
+            <li>لا نتحمل أضراراً ناتجة عن سوء استخدام أو تعديلات لاحقة من غير فريقنا.</li>
+            <li>الموقع للعرض والتواصل؛ والعقد النهائي هو ما يُتفق عليه مباشرة مع المعمل.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="toggleTerm(this)">
+          <span>9. التواصل والشكاوى</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="term-body">
+          لأي استفسار أو ملاحظة يمكنكم التواصل عبر صفحة
+          <a href="contact.html" style="color:var(--gold);">اتصل بنا</a>
+          أو المحادثة المباشرة أو الواتساب. نسعى لمعالجة الملاحظات بسرعة ووضوح.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <strong>ملاحظة:</strong>
+      هذه الشروط تنظّم استخدام الموقع وآلية التعامل العامة.
+      التفاصيل الخاصة بكل مشروع (السعر، المدة، المواد) تُثبت عند الاتفاق النهائي مع العميل.
+    </div>
+  </main>
+
+  <footer>جميع الحقوق محفوظة © 2026 الشام الذهبي</footer>
+
+  <script>
+    function toggleTerm(header) {
+      const body = header.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+
+      // إغلاق الكل (اختياري لتجربة أنظف)
+      document.querySelectorAll('.term-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.term-header').forEach(h => h.classList.remove('open'));
+
+      if (!isOpen) {
+        body.classList.add('open');
+        header.classList.add('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
