@@ -1,4 +1,4 @@
-const API = window.API_BASE_URL || "http://localhost:5000/api";
+const API = window.API_BASE_URL || ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port !== "5000" ? "http://localhost:5000/api" : `${location.origin}/api`);
 let allMessages = [];
 let activeId = null;
 const initialParams = new URLSearchParams(location.search);

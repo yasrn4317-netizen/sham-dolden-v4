@@ -2,7 +2,7 @@
 // لوحة التحكم - الشام الذهبي (admin.js) - نسخة Node.js & MySQL
 // ==========================================
 
-const API_URL = window.API_BASE_URL || "http://localhost:5000/api";
+const API_URL = window.API_BASE_URL || ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port !== "5000" ? "http://localhost:5000/api" : `${location.origin}/api`);
 
 let allProjectsData = [];
 let activeCategoryFilter = 'all';

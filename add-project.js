@@ -18,7 +18,7 @@ function buildModelCode(category, number) {
 // جلب الرقم التسلسلي التالي من السيرفر المحلي
 async function getNextModelNumber(category) {
   try {
-    const apiUrl = window.API_BASE_URL || "http://localhost:5000/api";
+    const apiUrl = window.API_BASE_URL || ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port !== "5000" ? "http://localhost:5000/api" : `${location.origin}/api`);
     const res = await fetch(`${apiUrl}/projects`);
     const data = await res.json();
 
@@ -159,7 +159,7 @@ if (form) {
     }
 
     try {
-      const apiUrl = window.API_BASE_URL || "http://localhost:5000/api";
+      const apiUrl = window.API_BASE_URL || ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && location.port !== "5000" ? "http://localhost:5000/api" : `${location.origin}/api`);
       const response = await fetch(`${apiUrl}/projects`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
