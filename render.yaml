@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: sham-dolden-v4
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SSL
+        value: "true"
