@@ -527,6 +527,7 @@ app.post("/api/settings", async (req, res) => {
         ]
       );
       const rows = await q("SELECT * FROM settings WHERE id = ?", [existing[0].id]);
+      broadcast("settings", rows[0] || {});
       res.json(rows[0]);
     } else {
       const result = await q(
@@ -540,6 +541,7 @@ app.post("/api/settings", async (req, res) => {
         ]
       );
       const rows = await q("SELECT * FROM settings WHERE id = ?", [result[0].id]);
+      broadcast("settings", rows[0] || {});
       res.json(rows[0]);
     }
   } catch (err) {

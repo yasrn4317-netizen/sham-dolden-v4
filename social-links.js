@@ -65,7 +65,29 @@
                 favicon.href = activeSettings.favicon;
             }
         })
-        .catch(() => updateLinks(activeSettings));
+        .catch(() => {
+            updateLinks(activeSettings);
+        });
+
+    if (window.EventSource) {
+        const stream = new EventSource(`${API_URL}/stream`);
+        stream.addEventListener("settings", (event) => {
+            try {
+                activeSettings = { ...defaults, ...(JSON.parse(event.data) || {}) };
+                updateLinks(activeSettings);
+                if (activeSettings.favicon) {
+                    let favicon = document.querySelector('link[rel="icon"]');
+                    if (!favicon) {
+                        favicon = document.createElement("link");
+                        favicon.rel = "icon";
+                        document.head.appendChild(favicon);
+                    }
+                    favicon.href = activeSettings.favicon;
+                }
+            } catch (_) { }
+        });
+        stream.onerror = () => stream.close();
+    }
 
     new MutationObserver(() => updateLinks(activeSettings)).observe(document.body, {
         childList: true,

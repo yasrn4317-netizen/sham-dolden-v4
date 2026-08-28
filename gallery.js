@@ -9,7 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initSidebar();
     initCategoryButtons();
+        listenForProjectUpdates();
 });
+
+    function listenForProjectUpdates() {
+        if (!window.EventSource) return;
+        const stream = new EventSource(`${API}/stream`);
+        stream.addEventListener("notification", (event) => {
+            try {
+                const notification = JSON.parse(event.data);
+                if (notification.type === "project") {
+                    const activeCategory = document.querySelector(".cat-btn.active")?.dataset.category || "الكل";
+                    loadGalleryProjects(activeCategory);
+                }
+            } catch (_) { }
+        });
+        stream.onerror = () => stream.close();
+    }
 
 // ==========================================
 // جلب وعرض المشاريع (العادية والمميزة)
