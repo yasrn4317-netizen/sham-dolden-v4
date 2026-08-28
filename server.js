@@ -29,14 +29,15 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 // الاتصال بقاعدة البيانات
 // عدّل كلمة المرور إذا عندك password لـ root
 // ==========================================
-const db = new Pool({
-  connectionString: process.env.DATABASE_URL,
+const databaseUrl = process.env.DATABASE_URL;
+const db = databaseUrl ? new Pool({
+  connectionString: databaseUrl,
   ssl: process.env.DB_SSL === "false" ? false : { rejectUnauthorized: false }
-});
+}) : null;
 
 let dbConnected = false;
 
-db.connect((err, client, release) => {
+if (db) db.connect((err, client, release) => {
   if (err) {
     console.error("خطأ في الاتصال بقاعدة البيانات:", err);
     console.error("تأكد من ضبط DATABASE_URL وقاعدة PostgreSQL.");
@@ -47,6 +48,7 @@ db.connect((err, client, release) => {
     ensureSettingsContactColumns();
   }
 });
+else console.error("DATABASE_URL غير مضبوط. أضف رابط Neon في Environment على Render.");
 
 async function ensureSettingsContactColumns() {
   for (const column of ["site_name", "logo", "telegram", "instagram", "tiktok", "x", "favicon", "city", "color", "visits"]) {
@@ -61,6 +63,7 @@ async function ensureSettingsContactColumns() {
 }
 
 function q(sql, params = []) {
+  if (!db) return Promise.reject(new Error("DATABASE_URL غير مضبوط"));
   let parameterIndex = 0;
   const postgresSql = sql.replace(/\?/g, () => `$${++parameterIndex}`);
   return db.query(postgresSql, params).then((result) => result.rows);
